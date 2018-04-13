@@ -27,7 +27,8 @@ import Textbox from 'components/textbox.jsx';
 import TutorialTip from 'components/tutorial/tutorial_tip';
 
 const KeyCodes = Constants.KeyCodes;
-import {AccountStatus, currentCommunityId, currentAgentId} from 'plenty-chat';
+import {AccountStatus, hasEnoughFundsToSendMessage, onChannelView,
+    NotEnoughFundsForMessageModal} from 'plenty-chat';
 
 export default class CreatePost extends React.Component {
     static propTypes = {
@@ -202,6 +203,8 @@ export default class CreatePost extends React.Component {
 
     constructor(props) {
         super(props);
+        onChannelView(this.props.currentUserId, this.props.currentTeamId);
+        console.log('Props for CreatePost', props);
         this.state = {
             message: this.props.draft.message,
             submitting: false,
@@ -209,9 +212,17 @@ export default class CreatePost extends React.Component {
             enableSendButton: false,
             showEmojiPicker: false,
             showConfirmModal: false,
+            showNotEnoughFunds: false,
         };
 
         this.lastBlurAt = 0;
+        this.clearNotEnoughFunds = this.clearNotEnoughFunds.bind(this);
+    }
+
+    clearNotEnoughFunds() {
+        this.setState({
+            showNotEnoughFunds: false,
+        });
     }
 
     componentWillMount() {
@@ -418,7 +429,15 @@ export default class CreatePost extends React.Component {
             return;
         }
 
-        this.doSubmit(e);
+        hasEnoughFundsToSendMessage(this.props.currentUserId, this.props.currentTeamId).then((fc) => {
+            if (fc) {
+                this.doSubmit(e);
+            } else {
+                this.setState({
+                    showNotEnoughFunds: true,
+                });
+            }
+        });
     }
 
     sendMessage = (post) => {
@@ -909,8 +928,8 @@ export default class CreatePost extends React.Component {
                 <div className={'post-create' + attachmentsDisabled}>
 
                     <AccountStatus
-                        agentId={currentAgentId}
-                        communityId={currentCommunityId}
+                        agentId={this.props.currentUserId}
+                        communityId={this.props.currentTeamId}
                     />
 
                     <div className='post-create-body'>
@@ -971,6 +990,10 @@ export default class CreatePost extends React.Component {
                     show={this.state.showConfirmModal}
                     onConfirm={this.handleNotifyAllConfirmation}
                     onCancel={this.hideNotifyAllModal}
+                />
+                <NotEnoughFundsForMessageModal
+                    show={this.state.showNotEnoughFunds}
+                    onClose={this.clearNotEnoughFunds}
                 />
             </form>
         );
