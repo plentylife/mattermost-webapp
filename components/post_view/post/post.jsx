@@ -13,6 +13,7 @@ import PostBody from 'components/post_view/post_body';
 import PostHeader from 'components/post_view/post_header';
 import ProfilePicture from 'components/profile_picture.jsx';
 import MattermostLogo from 'components/svg/mattermost_logo';
+import {MessageRating} from 'plenty-chat';
 
 export default class Post extends React.PureComponent {
     static propTypes = {
@@ -299,11 +300,20 @@ export default class Post extends React.PureComponent {
                 onMouseOver={this.setHover}
                 onMouseLeave={this.unsetHover}
             >
+                <div>
+                    <div>ID: {this.props.post.id}</div>
+                    <div>Original ID: {this.props.post.original_id}</div>
+                    <div>Current user ID: {this.props.currentUser.id}</div>
+                    <div>Author ID: {this.props.post.user_id}</div>
+                </div>
                 <div
                     id={'post_' + post.id}
                     className={this.getClassName(post, isSystemMessage, fromWebhook, fromAutoResponder)}
                 >
                     <div className={'post__content ' + centerClass}>
+
+                        <MessageRating/>
+
                         {profilePicContainer}
                         <div>
                             <PostHeader
