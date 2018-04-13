@@ -27,6 +27,7 @@ import Textbox from 'components/textbox.jsx';
 import TutorialTip from 'components/tutorial/tutorial_tip';
 
 const KeyCodes = Constants.KeyCodes;
+import {AccountStatus, currentCommunityId, currentAgentId} from 'plenty-chat';
 
 export default class CreatePost extends React.Component {
     static propTypes = {
@@ -906,6 +907,12 @@ export default class CreatePost extends React.Component {
                 onSubmit={this.handleSubmit}
             >
                 <div className={'post-create' + attachmentsDisabled}>
+
+                    <AccountStatus
+                        agentId={currentAgentId}
+                        communityId={currentCommunityId}
+                    />
+
                     <div className='post-create-body'>
                         <div className='post-body__cell'>
                             <Textbox

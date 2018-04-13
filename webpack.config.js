@@ -132,6 +132,8 @@ var MYSTATS = {
     warningsFilter: '',
 };
 
+// exclude: STANDARD_EXCLUDE,
+
 var config = {
     entry: ['babel-polyfill', 'whatwg-fetch', 'url-search-params-polyfill', './root.jsx', 'root.html'],
     output: {
@@ -144,7 +146,7 @@ var config = {
         rules: [
             {
                 test: /\.(js|jsx)?$/,
-                exclude: STANDARD_EXCLUDE,
+                exclude: /(node_modules|non_npm_dependencies)/,
                 use: [
                     {
                         loader: 'babel-loader',

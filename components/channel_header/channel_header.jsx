@@ -1036,6 +1036,7 @@ export default class ChannelHeader extends React.Component {
                 id='channel-header'
                 className='channel-header alt'
             >
+
                 <div className='flex-parent'>
                     <div className='flex-child'>
                         <div

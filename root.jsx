@@ -8,6 +8,8 @@ import {Router, Route} from 'react-router-dom';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import PDFJS from 'pdfjs-dist';
 
+import {plentyInit} from 'plenty-chat';
+
 // Import our styles
 import 'bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css';
 import 'sass/styles.scss';
@@ -25,6 +27,8 @@ PDFJS.disableWorker = true;
 // This is for anything that needs to be done for ALL react components.
 // This runs before we start to render anything.
 function preRenderSetup(callwhendone) {
+    plentyInit();
+
     window.onerror = (msg, url, line, column, stack) => {
         var l = {};
         l.level = 'ERROR';
