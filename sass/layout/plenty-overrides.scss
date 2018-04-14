@@ -1,0 +1,26 @@
+.post .post__content {
+    display: flex;
+}
+
+.post .post__content > div {
+    display: inline-flex;
+}
+
+.post .post__content > div:last-child {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post .post__content > div:last-child > div {
+    width: 100%;
+}
+
+.post, .post.same--root.same--user {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+.post .post__content .rating-container {
+    margin-right: 0.3em;
+    align-self: center;
+}

@@ -3,6 +3,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
+
 import {Posts} from 'mattermost-redux/constants';
 
 import AppDispatcher from 'dispatcher/app_dispatcher.jsx';
@@ -294,25 +295,36 @@ export default class Post extends React.PureComponent {
             centerClass = 'center';
         }
 
+        const MessageRatingDisplay = () => {
+            // fixme add check for self
+            if (!isSystemMessage) {
+                return <MessageRating
+                    agentId={this.props.currentUser.id}
+                    messageId={this.props.post.id}
+                />
+            }
+            return null
+        }
+
         return (
             <div
                 ref={this.getRef}
                 onMouseOver={this.setHover}
                 onMouseLeave={this.unsetHover}
             >
-                <div>
-                    <div>ID: {this.props.post.id}</div>
-                    <div>Original ID: {this.props.post.original_id}</div>
-                    <div>Current user ID: {this.props.currentUser.id}</div>
-                    <div>Author ID: {this.props.post.user_id}</div>
-                </div>
+                {/*<div>*/}
+                    {/*<div>ID: {this.props.post.id}</div>*/}
+                    {/*<div>Original ID: {this.props.post.original_id}</div>*/}
+                    {/*<div>Current user ID: {this.props.currentUser.id}</div>*/}
+                    {/*<div>Author ID: {this.props.post.user_id}</div>*/}
+                {/*</div>*/}
                 <div
                     id={'post_' + post.id}
                     className={this.getClassName(post, isSystemMessage, fromWebhook, fromAutoResponder)}
                 >
                     <div className={'post__content ' + centerClass}>
 
-                        <MessageRating/>
+                       <MessageRatingDisplay/>
 
                         {profilePicContainer}
                         <div>
