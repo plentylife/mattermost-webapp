@@ -4,6 +4,9 @@
 const childProcess = require('child_process');
 const path = require('path');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
@@ -238,6 +241,9 @@ var config = {
         alias: {
             jquery: 'jquery/src/jquery',
             superagent: 'node_modules/superagent/lib/client',
+            react: path.resolve(__dirname, 'node_modules', 'react'),
+            'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom'),
+            // path.resolve(__dirname, 'node_modules/lodash'),
         },
         extensions: ['.js', '.jsx'],
     },
@@ -264,7 +270,16 @@ var config = {
         }),
         extractCSS,
         extractSCSS,
+        new BundleAnalyzerPlugin(),
+        new DuplicatePackageCheckerPlugin({
+            verbose: true,
+            // emitError: true,
+        }),
     ],
+    externals: {
+        'nano-sqlite': 'commonjs nano-sqlite',
+        sqlite3: 'commonjs sqlite3',
+    },
 };
 
 if (NPM_TARGET !== 'stats') {

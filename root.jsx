@@ -29,6 +29,10 @@ PDFJS.disableWorker = true;
 function preRenderSetup(callwhendone) {
     plentyInit();
 
+    // window.require = (name) => {
+    //     window.console.log('Fake require', name);
+    // };
+
     window.onerror = (msg, url, line, column, stack) => {
         var l = {};
         l.level = 'ERROR';
