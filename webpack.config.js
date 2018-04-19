@@ -270,7 +270,7 @@ var config = {
         }),
         extractCSS,
         extractSCSS,
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new DuplicatePackageCheckerPlugin({
             verbose: true,
             // emitError: true,
@@ -281,6 +281,8 @@ var config = {
         sqlite3: 'commonjs sqlite3',
     },
 };
+
+console.log('WEBPACK DEV, TEST, FULLMAP', DEV, TEST, FULLMAP)
 
 if (NPM_TARGET !== 'stats') {
     config.stats = MYSTATS;
@@ -350,5 +352,7 @@ if (TEST) {
         ])
     );
 }
+
+console.log('WEBPACK CONFIG', config)
 
 module.exports = config;
