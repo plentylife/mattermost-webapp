@@ -297,7 +297,7 @@ export default class Post extends React.PureComponent {
 
         const MessageRatingDisplay = () => {
             // fixme add check for self
-            if (!isSystemMessage) {
+            if (!isSystemMessage && this.props.currentUser.id !== post.user_id) {
                 return <MessageRating
                     agentId={this.props.currentUser.id}
                     messageId={this.props.post.id}
