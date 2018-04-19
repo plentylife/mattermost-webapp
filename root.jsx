@@ -8,7 +8,9 @@ import {Router, Route} from 'react-router-dom';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import PDFJS from 'pdfjs-dist';
 
-import {plentyInit} from 'plenty-chat';
+import {plentyInit, plentyInitSync} from 'plenty-chat';
+import {getCurrentUserId} from 'mattermost-redux/selectors/entities/users';
+import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 
 // Import our styles
 import 'bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css';
@@ -28,6 +30,15 @@ PDFJS.disableWorker = true;
 // This runs before we start to render anything.
 function preRenderSetup(callwhendone) {
     plentyInit();
+
+    let unsubscribe = null;
+    unsubscribe = store.subscribe(() => {
+        plentyInitSync(getCurrentUserId(store.getState()), getCurrentTeamId(store.getState()), () => {
+            if (typeof unsubscribe === 'function') {
+                unsubscribe();
+            }
+        });
+    });
 
     // window.require = (name) => {
     //     window.console.log('Fake require', name);
