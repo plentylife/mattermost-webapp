@@ -204,7 +204,6 @@ export default class CreatePost extends React.Component {
     constructor(props) {
         super(props);
         onChannelView(this.props.currentUserId, this.props.currentChannel.id, this.props.currentTeamId);
-        console.log('Props for CreatePost', props);
         this.state = {
             message: this.props.draft.message,
             submitting: false,

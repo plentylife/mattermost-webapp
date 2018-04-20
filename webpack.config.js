@@ -153,15 +153,15 @@ var config = {
                 use: [
                     {
                         loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                'react',
-                                ['es2015', {modules: false}],
-                                'stage-0',
-                            ],
-                            plugins: ['transform-runtime'],
-                            cacheDirectory: true,
-                        },
+                        // options: {
+                        //     presets: [
+                        //         'react',
+                        //         ['es2015', {modules: false}],
+                        //         'stage-0',
+                        //     ],
+                        //     plugins: ['transform-runtime'],
+                        //     cacheDirectory: true,
+                        // },
                     },
                 ],
             },
@@ -242,6 +242,7 @@ var config = {
             jquery: 'jquery/src/jquery',
             superagent: 'node_modules/superagent/lib/client',
             react: path.resolve(__dirname, 'node_modules', 'react'),
+            React: path.resolve(__dirname, 'node_modules', 'react'),
             'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom'),
             // path.resolve(__dirname, 'node_modules/lodash'),
         },
@@ -293,7 +294,8 @@ if (DEV) {
     if (FULLMAP) {
         config.devtool = 'source-map';
     } else {
-        config.devtool = 'cheap-module-eval-source-map';
+        config.devtool = 'source-map';
+        // config.devtool = 'cheap-module-eval-source-map';
     }
 }
 

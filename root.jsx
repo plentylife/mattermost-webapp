@@ -8,6 +8,7 @@ import {Router, Route} from 'react-router-dom';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import PDFJS from 'pdfjs-dist';
 
+// import {nSQL} from 'nano-sql';
 import {plentyInit, plentyInitSync} from 'plenty-chat';
 import {getCurrentUserId} from 'mattermost-redux/selectors/entities/users';
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
@@ -22,6 +23,18 @@ import {makeAsyncComponent} from 'components/async_load';
 import store from 'stores/redux_store.jsx';
 import loadRoot from 'bundle-loader?lazy!components/root';
 
+plentyInit();
+
+// console.log('init within mm')
+// const d = nSQL()
+// console.log('DB obj', d)
+// const c = d.connect()
+// console.log('DB con', c)
+// c.then(() => console.log('NSQL connected'))
+//
+// window.nsql = nSQL
+
+
 const Root = makeAsyncComponent(loadRoot);
 
 PDFJS.disableWorker = true;
@@ -29,7 +42,6 @@ PDFJS.disableWorker = true;
 // This is for anything that needs to be done for ALL react components.
 // This runs before we start to render anything.
 function preRenderSetup(callwhendone) {
-    plentyInit();
 
     let unsubscribe = null;
     unsubscribe = store.subscribe(() => {
