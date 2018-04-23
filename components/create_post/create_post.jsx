@@ -203,7 +203,6 @@ export default class CreatePost extends React.Component {
 
     constructor(props) {
         super(props);
-        onChannelView(this.props.currentUserId, this.props.currentChannel.id, this.props.currentTeamId);
         this.state = {
             message: this.props.draft.message,
             submitting: false,
@@ -240,6 +239,7 @@ export default class CreatePost extends React.Component {
     }
 
     componentDidMount() {
+        onChannelView(this.props.currentUserId, this.props.currentChannel.id, this.props.currentTeamId);
         this.focusTextbox();
         document.addEventListener('keydown', this.showShortcuts);
     }
@@ -258,6 +258,7 @@ export default class CreatePost extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.currentChannel.id !== this.props.currentChannel.id) {
+            onChannelView(this.props.currentUserId, this.props.currentChannel.id, this.props.currentTeamId);
             this.focusTextbox();
         }
     }

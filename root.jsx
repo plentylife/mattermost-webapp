@@ -8,8 +8,7 @@ import {Router, Route} from 'react-router-dom';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import PDFJS from 'pdfjs-dist';
 
-// import {nSQL} from 'nano-sql';
-import {plentyInit, plentyInitSync} from 'plenty-chat';
+import {plentyInit, plentyInitSync, nSQL} from 'plenty-chat';
 import {getCurrentUserId} from 'mattermost-redux/selectors/entities/users';
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 
@@ -25,16 +24,6 @@ import loadRoot from 'bundle-loader?lazy!components/root';
 
 plentyInit();
 
-// console.log('init within mm')
-// const d = nSQL()
-// console.log('DB obj', d)
-// const c = d.connect()
-// console.log('DB con', c)
-// c.then(() => console.log('NSQL connected'))
-//
-// window.nsql = nSQL
-
-
 const Root = makeAsyncComponent(loadRoot);
 
 PDFJS.disableWorker = true;
@@ -42,19 +31,14 @@ PDFJS.disableWorker = true;
 // This is for anything that needs to be done for ALL react components.
 // This runs before we start to render anything.
 function preRenderSetup(callwhendone) {
-
     let unsubscribe = null;
     unsubscribe = store.subscribe(() => {
         plentyInitSync(getCurrentUserId(store.getState()), getCurrentTeamId(store.getState()), () => {
             if (typeof unsubscribe === 'function') {
                 unsubscribe();
             }
-        });
+        }, [process.env.PLENTY_PEER]);
     });
-
-    // window.require = (name) => {
-    //     window.console.log('Fake require', name);
-    // };
 
     window.onerror = (msg, url, line, column, stack) => {
         var l = {};
@@ -69,7 +53,10 @@ function preRenderSetup(callwhendone) {
         const state = store.getState();
         const config = getConfig(state);
         if (config.EnableDeveloper === 'true') {
-            window.ErrorStore.storeLastError({type: 'developer', message: 'DEVELOPER MODE: A JavaScript error has occurred.  Please use the JavaScript console to capture and report the error (row: ' + line + ' col: ' + column + ').'});
+            window.ErrorStore.storeLastError({
+                type: 'developer',
+                message: 'DEVELOPER MODE: A JavaScript error has occurred.  Please use the JavaScript console to capture and report the error (row: ' + line + ' col: ' + column + ').',
+            });
             window.ErrorStore.emitChange();
         }
     };
@@ -77,17 +64,19 @@ function preRenderSetup(callwhendone) {
 }
 
 function renderRootComponent() {
-    ReactDOM.render((
-        <Provider store={store}>
-            <Router history={browserHistory}>
-                <Route
-                    path='/'
-                    component={Root}
-                />
-            </Router>
-        </Provider>
-    ),
-    document.getElementById('root'));
+    nSQL().onConnected((db) => {
+        ReactDOM.render((
+            <Provider store={store}>
+                <Router history={browserHistory}>
+                    <Route
+                        path='/'
+                        component={Root}
+                    />
+                </Router>
+            </Provider>
+            ),
+            document.getElementById('root'));
+    });
 }
 
 /**

@@ -268,6 +268,9 @@ var config = {
         }),
         new webpack.DefinePlugin({
             COMMIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse HEAD || echo dev').toString()),
+            'process.env': {
+                PLENTY_PEER: JSON.stringify(process.env.PLENTY_PEER || 'http://localhost:3000/')
+            }
         }),
         extractCSS,
         extractSCSS,
@@ -284,6 +287,7 @@ var config = {
 };
 
 console.log('WEBPACK DEV, TEST, FULLMAP', DEV, TEST, FULLMAP)
+console.log('\n\n\nPeer', process.env.PLENTY_PEER)
 
 if (NPM_TARGET !== 'stats') {
     config.stats = MYSTATS;
@@ -322,7 +326,7 @@ if (!DEV) {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
-            },
+            }
         })
     );
     config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
@@ -354,7 +358,5 @@ if (TEST) {
         ])
     );
 }
-
-console.log('WEBPACK CONFIG', config)
 
 module.exports = config;
