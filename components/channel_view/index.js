@@ -12,6 +12,10 @@ import {getDirectTeammate} from 'utils/utils.jsx';
 import {TutorialSteps, Preferences} from 'utils/constants.jsx';
 
 import ChannelView from './channel_view.jsx';
+import {savePreference} from '../../actions/user_actions'
+import UserStore from '../../stores/user_store'
+
+// let once = false
 
 // Temporary selector until getDirectTeammate is converted to be redux-friendly
 const getDeactivatedChannel = createSelector(
@@ -24,6 +28,16 @@ const getDeactivatedChannel = createSelector(
 );
 
 function mapStateToProps(state) {
+    // if (!once) {
+    //     once = true;
+    //     /* TEMP. for writing the tutorial */
+    //     savePreference(
+    //         Preferences.TUTORIAL_STEP,
+    //         UserStore.getCurrentId(),
+    //         (0).toString()
+    //     );
+    // }
+
     const channelId = state.entities.channels.currentChannelId;
 
     const config = getConfig(state);

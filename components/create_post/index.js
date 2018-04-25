@@ -61,7 +61,10 @@ function mapStateToProps() {
             currentUserId,
             ctrlSend: getBool(state, Preferences.CATEGORY_ADVANCED_SETTINGS, 'send_on_ctrl_enter'),
             fullWidthTextBox: get(state, Preferences.CATEGORY_DISPLAY_SETTINGS, Preferences.CHANNEL_DISPLAY_MODE, Preferences.CHANNEL_DISPLAY_MODE_DEFAULT) === Preferences.CHANNEL_DISPLAY_MODE_FULL_SCREEN,
-            showTutorialTip: enableTutorial && tutorialStep === TutorialSteps.POST_POPOVER,
+            // showTutorialTip: enableTutorial && tutorialStep === TutorialSteps.POST_POPOVER,
+
+            showTutorialTip: false,
+
             messageInHistoryItem: makeGetMessageInHistoryItem(Posts.MESSAGE_TYPES.POST)(state),
             draft,
             recentPostIdInChannel,

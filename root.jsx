@@ -21,6 +21,9 @@ import {browserHistory} from 'utils/browser_history';
 import {makeAsyncComponent} from 'components/async_load';
 import store from 'stores/redux_store.jsx';
 import loadRoot from 'bundle-loader?lazy!components/root';
+import {Preferences} from './utils/constants';
+import {savePreference} from './actions/user_actions';
+import UserStore from './stores/user_store';
 
 plentyInit();
 

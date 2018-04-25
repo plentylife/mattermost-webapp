@@ -100,13 +100,11 @@ export default class ChannelView extends React.PureComponent {
     }
 
     render() {
-        // if (this.props.showTutorial) {
-        //     return (
-        //         <TutorialView
-        //             isRoot={false}
-        //         />
-        //     );
-        // }
+        if (this.props.showTutorial) {
+            return (
+                <TutorialView isRoot={false}/>
+            );
+        }
 
         let createPost;
         if (this.props.deactivatedChannel) {

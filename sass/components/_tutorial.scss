@@ -166,7 +166,11 @@
 }
 
 .tutorial-steps__container {
-    display: table;
+    //display: table;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+
     height: 100%;
     left: 0;
     position: absolute;
@@ -189,8 +193,10 @@
     }
 
     .tutorial__footer {
+        margin-bottom: 1em;
+
         bottom: 0;
-        position: absolute;
+        //position: absolute;
     }
 
     h1 {
@@ -207,7 +213,7 @@
 
     .tutorial__circles {
         bottom: 25px;
-        position: absolute;
+        //position: absolute;
     }
 
     .tutorial-skip {

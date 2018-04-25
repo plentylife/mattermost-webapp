@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {FormattedHTMLMessage, FormattedMessage} from 'react-intl';
 
-import {trackEvent} from 'actions/diagnostics_actions.jsx';
+// import {trackEvent} from 'actions/diagnostics_actions.jsx';
 import * as GlobalActions from 'actions/global_actions.jsx';
 import {savePreference} from 'actions/user_actions.jsx';
 import PreferenceStore from 'stores/preference_store.jsx';
@@ -14,8 +14,9 @@ import UserStore from 'stores/user_store.jsx';
 import {Constants, Preferences} from 'utils/constants.jsx';
 import {useSafeUrl} from 'utils/url.jsx';
 import AppIcons from 'images/appIcons.png';
+import {Tutorial} from 'plenty-chat';
 
-const NUM_SCREENS = 3;
+const NUM_SCREENS = 7;
 
 export default class TutorialIntroScreens extends React.Component {
     static propTypes = {
@@ -33,19 +34,7 @@ export default class TutorialIntroScreens extends React.Component {
     }
 
     handleNext = () => {
-        switch (this.state.currentScreen) {
-        case 0:
-            trackEvent('tutorial', 'tutorial_screen_1_welcome_to_mattermost_next');
-            break;
-        case 1:
-            trackEvent('tutorial', 'tutorial_screen_2_how_mattermost_works_next');
-            break;
-        case 2:
-            trackEvent('tutorial', 'tutorial_screen_3_youre_all_set_next');
-            break;
-        }
-
-        if (this.state.currentScreen < 2) {
+        if (this.state.currentScreen < (NUM_SCREENS - 1)) {
             this.setState({currentScreen: this.state.currentScreen + 1});
             return;
         }
@@ -62,34 +51,40 @@ export default class TutorialIntroScreens extends React.Component {
     skipTutorial = (e) => {
         e.preventDefault();
 
-        switch (this.state.currentScreen) {
-        case 0:
-            trackEvent('tutorial', 'tutorial_screen_1_welcome_to_mattermost_skip');
-            break;
-        case 1:
-            trackEvent('tutorial', 'tutorial_screen_2_how_mattermost_works_skip');
-            break;
-        case 2:
-            trackEvent('tutorial', 'tutorial_screen_3_youre_all_set_skip');
-            break;
-        }
-
         savePreference(
             Preferences.TUTORIAL_STEP,
             UserStore.getCurrentId(),
             Constants.TutorialSteps.FINISHED.toString(),
         );
     }
+
     createScreen = () => {
         switch (this.state.currentScreen) {
         case 0:
-            return this.createScreenOne();
+            return this.createScreenWithCircles(Tutorial.ScreenOne);
         case 1:
-            return this.createScreenTwo();
+            return this.createScreenWithCircles(Tutorial.ScreenTwo);
         case 2:
-            return this.createScreenThree();
+            return this.createScreenWithCircles(Tutorial.ScreenThree);
+        case 3:
+            return this.createScreenWithCircles(Tutorial.ScreenFour);
+        case 4:
+            return this.createScreenWithCircles(Tutorial.ScreenFive);
+        case 5:
+            return this.createScreenWithCircles(Tutorial.ScreenTasks);
+        case 6:
+            return this.createScreenWithCircles(Tutorial.ScreenCaveat);
         }
         return null;
+    }
+
+    createScreenWithCircles(Screen) {
+        const circles = this.createCircles();
+
+        return (<div>
+            <Screen/>
+            {circles}
+        </div>);
     }
 
     createScreenOne() {
