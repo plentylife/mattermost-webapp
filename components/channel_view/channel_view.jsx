@@ -15,6 +15,8 @@ import PostView from 'components/post_view';
 import TutorialView from 'components/tutorial';
 import {clearMarks, mark, measure, trackEvent} from 'actions/diagnostics_actions.jsx';
 
+import {AgentNameModal} from 'plenty-chat';
+
 export default class ChannelView extends React.PureComponent {
     static propTypes = {
 
@@ -139,6 +141,8 @@ export default class ChannelView extends React.PureComponent {
                 id='app-content'
                 className='app__content'
             >
+                <AgentNameModal/>
+
                 <FileUploadOverlay overlayType='center'/>
                 <ChannelHeader
                     channelId={this.props.channelId}

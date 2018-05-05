@@ -8,7 +8,7 @@ import {Router, Route} from 'react-router-dom';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import PDFJS from 'pdfjs-dist';
 
-import {plentyInit, plentyInitSync, nSQL} from 'plenty-chat';
+import {plentyInit, plentyInitSync, nSQL, provideUserGetterSetter} from 'plenty-chat';
 import {getCurrentUserId} from 'mattermost-redux/selectors/entities/users';
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 
@@ -22,10 +22,11 @@ import {makeAsyncComponent} from 'components/async_load';
 import store from 'stores/redux_store.jsx';
 import loadRoot from 'bundle-loader?lazy!components/root';
 import {Preferences} from './utils/constants';
-import {savePreference} from './actions/user_actions';
+import {savePreference, updateUser} from './actions/user_actions'
 import UserStore from './stores/user_store';
 
 plentyInit();
+provideUserGetterSetter(UserStore.getCurrentUser, updateUser);
 
 const Root = makeAsyncComponent(loadRoot);
 
