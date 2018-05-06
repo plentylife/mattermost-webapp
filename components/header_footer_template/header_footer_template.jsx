@@ -96,23 +96,31 @@ export default class NotLoggedIn extends React.PureComponent {
                 <div className='row content'>
                     {this.props.children}
                 </div>
-                <div className='row footer'>
-                    <div className='footer-pane col-xs-12'>
-                        <div className='col-xs-12'>
-                            <span className='pull-right footer-site-name'>{'Mattermost'}</span>
-                        </div>
-                        <div className='col-xs-12'>
-                            <span className='pull-right footer-link copyright'>
-                                {`© 2015-${new Date().getFullYear()} Mattermost, Inc.`}
-                            </span>
-                            <span className='pull-right'>
-                                {content}
-                            </span>
-                        </div>
-                    </div>
-                </div>
             </div>
         );
+
+        // return (
+        //     <div className='inner-wrap'>
+        //         <div className='row content'>
+        //             {this.props.children}
+        //         </div>
+        //         <div className='row footer'>
+        //             <div className='footer-pane col-xs-12'>
+        //                 <div className='col-xs-12'>
+        //                     <span className='pull-right footer-site-name'>{'Mattermost'}</span>
+        //                 </div>
+        //                 <div className='col-xs-12'>
+        //                     <span className='pull-right footer-link copyright'>
+        //                         {`© 2015-${new Date().getFullYear()} Mattermost, Inc.`}
+        //                     </span>
+        //                     <span className='pull-right'>
+        //                         {content}
+        //                     </span>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // );
     }
 }
 

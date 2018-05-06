@@ -52,6 +52,7 @@ import loadAuthorize from 'bundle-loader?lazy!components/authorize';
 import loadCreateTeam from 'bundle-loader?lazy!components/create_team';
 import loadMfa from 'bundle-loader?lazy!components/mfa/mfa_controller';
 import store from 'stores/redux_store.jsx';
+import {FrontPage} from 'plenty-chat';
 
 const CreateTeam = makeAsyncComponent(loadCreateTeam);
 const ErrorPage = makeAsyncComponent(loadErrorPage);
@@ -216,7 +217,8 @@ export default class Root extends React.Component {
     redirectIfNecessary = (props) => {
         if (props.location.pathname === '/') {
             if (this.props.noAccounts) {
-                this.props.history.push('/signup_user_complete');
+                // this.props.history.push('/signup_user_complete');
+                this.props.history.push('/front-page');
             } else if (UserStore.getCurrentUser()) {
                 GlobalActions.redirectUserToDefaultTeam();
             }
@@ -252,6 +254,10 @@ export default class Root extends React.Component {
                     <Route
                         path={'/error'}
                         component={ErrorPage}
+                    />
+                    <Route
+                        path={'/front-page'}
+                        component={FrontPage}
                     />
                     <HFTRoute
                         path={'/login'}
@@ -325,7 +331,8 @@ export default class Root extends React.Component {
                         path={'/:team'}
                         component={NeedsTeam}
                     />
-                    <Redirect to={'/login'}/>
+                    {/*<Redirect to={'/login'}/>*/}
+                    <Redirect to={'/front-page'}/>
                 </Switch>
             </IntlProvider>
         );

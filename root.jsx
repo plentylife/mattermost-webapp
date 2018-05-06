@@ -9,6 +9,7 @@ import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import PDFJS from 'pdfjs-dist';
 
 import {plentyInit, plentyInitSync, nSQL, provideUserGetterSetter} from 'plenty-chat';
+import 'plenty-chat/src/mmintegration/main-mm-styles.scss';
 import {getCurrentUserId} from 'mattermost-redux/selectors/entities/users';
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 

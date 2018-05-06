@@ -14,26 +14,28 @@ export default class SiteNameAndDescription extends React.PureComponent {
 
     static defaultProps = {
         isLicensed: false,
-        siteName: 'Mattermost',
+        siteName: 'Plenty',
     };
 
     render() {
-        const {
-            customDescriptionText,
-            isLicensed,
-            siteName,
-        } = this.props;
-        let description = null;
-        if (isLicensed && customDescriptionText) {
-            description = customDescriptionText;
-        } else {
-            description = (
-                <FormattedMessage
-                    id='web.root.signup_info'
-                    defaultMessage='All team communication in one place, searchable and accessible anywhere'
-                />
-            );
-        }
+        // const {
+        //     customDescriptionText,
+        //     isLicensed,
+        //     siteName,
+        // } = this.props;
+        // let description = null;
+        // if (isLicensed && customDescriptionText) {
+        //     description = customDescriptionText;
+        // } else {
+        //     description = (
+        //         <FormattedMessage
+        //             id='web.root.signup_info'
+        //             defaultMessage='All team communication in one place, searchable and accessible anywhere'
+        //         />
+        //     );
+        // }
+        const siteName = 'Plenty';
+        const description = 'where doing the right thing, is profitable';
 
         return (
             <React.Fragment>

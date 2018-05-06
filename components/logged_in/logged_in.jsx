@@ -93,7 +93,8 @@ export default class LoggedIn extends React.Component {
 
         if (!this.state.user) {
             $('#root').attr('class', '');
-            GlobalActions.emitUserLoggedOutEvent('/login?redirect_to=' + encodeURIComponent(this.props.location.pathname));
+            // GlobalActions.emitUserLoggedOutEvent('/login?redirect_to=' + encodeURIComponent(this.props.location.pathname));
+            GlobalActions.emitUserLoggedOutEvent('/front-page?redirect_to=' + encodeURIComponent(this.props.location.pathname));
         }
 
         $('body').on('mouseenter mouseleave', '.post', function mouseOver(ev) {
