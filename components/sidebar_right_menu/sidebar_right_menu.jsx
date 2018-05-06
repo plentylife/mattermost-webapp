@@ -560,22 +560,22 @@ export default class SidebarRightMenu extends React.Component {
                         {consoleDivider}
                         {consoleLink}
                         <li className='divider'/>
-                        {helpLink}
-                        {reportLink}
-                        {nativeAppLink}
-                        <li>
-                            <a
-                                href='#'
-                                onClick={this.handleAboutModal}
-                            >
-                                <i className='icon fa fa-info'/>
-                                <FormattedMessage
-                                    id='navbar_dropdown.about'
-                                    defaultMessage='About Mattermost'
-                                />
-                            </a>
-                        </li>
-                        <li className='divider'/>
+                        {/*{helpLink}*/}
+                        {/*{reportLink}*/}
+                        {/*{nativeAppLink}*/}
+                        {/*<li>*/}
+                            {/*<a*/}
+                                {/*href='#'*/}
+                                {/*onClick={this.handleAboutModal}*/}
+                            {/*>*/}
+                                {/*<i className='icon fa fa-info'/>*/}
+                                {/*<FormattedMessage*/}
+                                    {/*id='navbar_dropdown.about'*/}
+                                    {/*defaultMessage='About Mattermost'*/}
+                                {/*/>*/}
+                            {/*</a>*/}
+                        {/*</li>*/}
+                        {/*<li className='divider'/>*/}
                         <li>
                             <a
                                 href='#'

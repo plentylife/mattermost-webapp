@@ -703,19 +703,19 @@ export default class SidebarHeaderDropdown extends React.Component {
                     {teamSettings}
                     {manageLink}
                     {teams}
-                    {pluginDivider}
-                    {pluginItems}
-                    {backstageDivider}
-                    {integrationsLink}
+                    {/*{pluginDivider}*/}
+                    {/*{pluginItems}*/}
+                    {/*{backstageDivider}*/}
+                    {/*{integrationsLink}*/}
                     {customEmoji}
                     {sysAdminDivider}
                     {sysAdminLink}
-                    {helpDivider}
-                    {helpLink}
-                    {keyboardShortcuts}
-                    {reportLink}
-                    {nativeAppLink}
-                    {about}
+                    {/*{helpDivider}*/}
+                    {/*{helpLink}*/}
+                    {/*{keyboardShortcuts}*/}
+                    {/*{reportLink}*/}
+                    {/*{nativeAppLink}*/}
+                    {/*{about}*/}
                     {logoutDivider}
                     {logout}
                     {teamMembersModal}
