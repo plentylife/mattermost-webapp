@@ -27,8 +27,10 @@ import Textbox from 'components/textbox.jsx';
 import TutorialTip from 'components/tutorial/tutorial_tip';
 
 const KeyCodes = Constants.KeyCodes;
-import {AccountStatus, hasEnoughFundsToSendMessage, onChannelView,
+import {ControlPanel, hasEnoughFundsToSendMessage, onChannelView,
     NotEnoughFundsForMessageModal} from 'plenty-chat';
+import {imageURLForUser} from '../../utils/utils';
+import UserStore from '../../stores/user_store';
 
 export default class CreatePost extends React.Component {
     static propTypes = {
@@ -927,9 +929,11 @@ export default class CreatePost extends React.Component {
             >
                 <div className={'post-create' + attachmentsDisabled}>
 
-                    <AccountStatus
+                    <ControlPanel
                         agentId={this.props.currentUserId}
                         communityId={this.props.currentTeamId}
+                        getUserImage={imageURLForUser}
+                        getUserProfile={UserStore.getProfile}
                     />
 
                     <div className='post-create-body'>
