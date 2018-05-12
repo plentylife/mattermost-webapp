@@ -190,7 +190,7 @@ export default class TeamMembersDropdown extends React.Component {
             currentRoles = (
                 <FormattedMessage
                     id='team_members_dropdown.teamAdmin'
-                    defaultMessage='Team Admin'
+                    defaultMessage='Community Admin'
                 />
             );
         }
@@ -234,7 +234,7 @@ export default class TeamMembersDropdown extends React.Component {
                     >
                         <FormattedMessage
                             id='team_members_dropdown.makeAdmin'
-                            defaultMessage='Make Team Admin'
+                            defaultMessage='Make Community Admin'
                         />
                     </a>
                 </li>
@@ -270,7 +270,7 @@ export default class TeamMembersDropdown extends React.Component {
                     >
                         <FormattedMessage
                             id='team_members_dropdown.leave_team'
-                            defaultMessage='Remove From Team'
+                            defaultMessage='Remove From Community'
                         />
                     </a>
                 </li>

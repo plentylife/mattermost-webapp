@@ -314,7 +314,7 @@ export class WebhookSettings extends AdminSettings {
                     helpText={
                         <FormattedMessage
                             id='admin.service.integrationAdminDesc'
-                            defaultMessage='When true, webhooks and slash commands can only be created, edited and viewed by Team and System Admins, and OAuth 2.0 applications by System Admins. Integrations are available to all users after they have been created by the Admin.'
+                            defaultMessage='When true, webhooks and slash commands can only be created, edited and viewed by Community and System Admins, and OAuth 2.0 applications by System Admins. Integrations are available to all users after they have been created by the Admin.'
                         />
                     }
                     value={this.state.enableOnlyAdminIntegrations}

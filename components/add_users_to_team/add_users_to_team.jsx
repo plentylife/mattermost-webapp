@@ -226,7 +226,7 @@ export default class AddUsersToTeam extends React.Component {
                     <Modal.Title>
                         <FormattedMessage
                             id='add_users_to_team.title'
-                            defaultMessage='Add New Members To {teamName} Team'
+                            defaultMessage='Add New Members To {teamName} Community'
                             values={{
                                 teamName: (
                                     <strong>{this.props.currentTeamName}</strong>

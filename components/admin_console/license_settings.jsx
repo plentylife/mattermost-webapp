@@ -144,7 +144,7 @@ class LicenseSettings extends React.Component {
                     <br/>
                     <br/>
                     <p className='help-text'>
-                        {'If you migrate servers you may need to remove your license key to install it elsewhere. You can remove the key here, which will revert functionality to that of Team Edition.'}
+                        {'If you migrate servers you may need to remove your license key to install it elsewhere. You can remove the key here, which will revert functionality to that of Community Edition.'}
                     </p>
                 </div>
             );
@@ -161,6 +161,7 @@ class LicenseSettings extends React.Component {
                         {'https://mattermost.com/'}
                     </a>
                 </p>
+
             );
 
             licenseType = 'This software is offered under a commercial license.\n\nSee ENTERPRISE-EDITION-LICENSE.txt in your root install directory for details. See NOTICE.txt for information about open source software used in this system.';

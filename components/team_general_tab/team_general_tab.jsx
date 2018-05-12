@@ -128,7 +128,7 @@ export default class GeneralTab extends React.Component {
             state.clientError = (
                 <FormattedMessage
                     id='general_tab.teamNameRestrictions'
-                    defaultMessage='Team Name must be {min} or more characters up to a maximum of {max}. You can add a longer team description.'
+                    defaultMessage='Community Name must be {min} or more characters up to a maximum of {max}. You can add a longer team description.'
                     values={{
                         min: Constants.MIN_TEAMNAME_LENGTH,
                         max: Constants.MAX_TEAMNAME_LENGTH,
@@ -310,7 +310,7 @@ export default class GeneralTab extends React.Component {
                 });
             } else if (file.size > this.props.maxFileSize) {
                 this.setState({
-                    clientError: Utils.localizeMessage('general_tab.teamIconTooLarge', 'Unable to upload team icon. File is too large.'),
+                    clientError: Utils.localizeMessage('general_tab.teamIconTooLarge', 'Unable to upload community icon. File is too large.'),
                 });
             } else {
                 this.setState({
@@ -384,7 +384,7 @@ export default class GeneralTab extends React.Component {
                         <br/>
                         <FormattedMessage
                             id='general_tab.openInviteDesc'
-                            defaultMessage='When allowed, a link to this team will be included on the landing page allowing anyone with an account to join this team.'
+                            defaultMessage='When allowed, a link to this community will be included on the landing page allowing anyone with an account to join this community.'
                         />
                     </div>
                 </div>,
@@ -392,7 +392,7 @@ export default class GeneralTab extends React.Component {
 
             openInviteSection = (
                 <SettingItemMax
-                    title={Utils.localizeMessage('general_tab.openInviteTitle', 'Allow any user with an account on this server to join this team')}
+                    title={Utils.localizeMessage('general_tab.openInviteTitle', 'Allow any user with an account on this server to join this community')}
                     inputs={inputs}
                     submit={this.handleOpenInviteSubmit}
                     serverError={serverError}
@@ -409,7 +409,7 @@ export default class GeneralTab extends React.Component {
 
             openInviteSection = (
                 <SettingItemMin
-                    title={Utils.localizeMessage('general_tab.openInviteTitle', 'Allow any user with an account on this server to join this team')}
+                    title={Utils.localizeMessage('general_tab.openInviteTitle', 'Allow any user with an account on this server to join this community')}
                     describe={describe}
                     updateSection={this.handleUpdateSection}
                     section={'open_invite'}
@@ -454,13 +454,13 @@ export default class GeneralTab extends React.Component {
                     <div className='setting-list__hint'>
                         <FormattedMessage
                             id='general_tab.codeLongDesc'
-                            defaultMessage='The Invite Code is used as part of the URL in the team invitation link created by {getTeamInviteLink} in the main menu. Regenerating creates a new team invitation link and invalidates the previous link.'
+                            defaultMessage='The Invite Code is used as part of the URL in the community invitation link created by {getTeamInviteLink} in the main menu. Regenerating creates a new community invitation link and invalidates the previous link.'
                             values={{
                                 getTeamInviteLink: (
                                     <strong>
                                         <FormattedMessage
                                             id='general_tab.getTeamInviteLink'
-                                            defaultMessage='Get Team Invite Link'
+                                            defaultMessage='Get Community Invite Link'
                                         />
                                     </strong>
                                 ),
@@ -499,7 +499,7 @@ export default class GeneralTab extends React.Component {
             let teamNameLabel = (
                 <FormattedMessage
                     id='general_tab.teamName'
-                    defaultMessage='Team Name'
+                    defaultMessage='Community Name'
                 />
             );
             if (Utils.isMobile()) {
@@ -527,11 +527,11 @@ export default class GeneralTab extends React.Component {
                 </div>
             );
 
-            const nameExtraInfo = <span>{Utils.localizeMessage('general_tab.teamNameInfo', 'Set the name of the team as it appears on your sign-in screen and at the top of the left-hand sidebar.')}</span>;
+            const nameExtraInfo = <span>{Utils.localizeMessage('general_tab.teamNameInfo', 'Set the name of the community as it appears on your sign-in screen and at the top of the left-hand sidebar.')}</span>;
 
             nameSection = (
                 <SettingItemMax
-                    title={Utils.localizeMessage('general_tab.teamName', 'Team Name')}
+                    title={Utils.localizeMessage('general_tab.teamName', 'Community Name')}
                     inputs={inputs}
                     submit={this.handleNameSubmit}
                     serverError={serverError}
@@ -545,7 +545,7 @@ export default class GeneralTab extends React.Component {
 
             nameSection = (
                 <SettingItemMin
-                    title={Utils.localizeMessage('general_tab.teamName', 'Team Name')}
+                    title={Utils.localizeMessage('general_tab.teamName', 'Community Name')}
                     describe={describe}
                     updateSection={this.handleUpdateSection}
                     section={'name'}
@@ -561,7 +561,7 @@ export default class GeneralTab extends React.Component {
             let teamDescriptionLabel = (
                 <FormattedMessage
                     id='general_tab.teamDescription'
-                    defaultMessage='Team Description'
+                    defaultMessage='Community Description'
                 />
             );
             if (Utils.isMobile()) {
@@ -589,11 +589,11 @@ export default class GeneralTab extends React.Component {
                 </div>
             );
 
-            const descriptionExtraInfo = <span>{Utils.localizeMessage('general_tab.teamDescriptionInfo', 'Team description provides additional information to help users select the right team. Maximum of 50 characters.')}</span>;
+            const descriptionExtraInfo = <span>{Utils.localizeMessage('general_tab.teamDescriptionInfo', 'Community description provides additional information to help users select the right community. Maximum of 50 characters.')}</span>;
 
             descriptionSection = (
                 <SettingItemMax
-                    title={Utils.localizeMessage('general_tab.teamDescription', 'Team Description')}
+                    title={Utils.localizeMessage('general_tab.teamDescription', 'Community Description')}
                     inputs={inputs}
                     submit={this.handleDescriptionSubmit}
                     serverError={serverError}
@@ -610,13 +610,13 @@ export default class GeneralTab extends React.Component {
                 describemsg = (
                     <FormattedMessage
                         id='general_tab.emptyDescription'
-                        defaultMessage="Click 'Edit' to add a team description."
+                        defaultMessage="Click 'Edit' to add a community description."
                     />
                 );
             }
             descriptionSection = (
                 <SettingItemMin
-                    title={Utils.localizeMessage('general_tab.teamDescription', 'Team Description')}
+                    title={Utils.localizeMessage('general_tab.teamDescription', 'Community Description')}
                     describe={describemsg}
                     updateSection={this.handleUpdateSection}
                     section={'description'}
@@ -629,7 +629,7 @@ export default class GeneralTab extends React.Component {
             teamIconSection = (
                 <SettingPicture
                     imageContext='team'
-                    title={Utils.localizeMessage('general_tab.teamIcon', 'Team Icon')}
+                    title={Utils.localizeMessage('general_tab.teamIcon', 'Community Icon')}
                     src={Utils.imageURLForTeam(team)}
                     file={this.state.teamIconFile}
                     serverError={this.state.serverError}
@@ -673,7 +673,7 @@ export default class GeneralTab extends React.Component {
 
             teamIconSection = (
                 <SettingItemMin
-                    title={Utils.localizeMessage('general_tab.teamIcon', 'Team Icon')}
+                    title={Utils.localizeMessage('general_tab.teamIcon', 'Community Icon')}
                     describe={minMessage}
                     section={'team_icon'}
                     updateSection={this.handleUpdateSection}

@@ -189,7 +189,7 @@ export default class TeamUrl extends React.PureComponent {
                     <h2>
                         <FormattedMessage
                             id='create_team.team_url.teamUrl'
-                            defaultMessage='Team URL'
+                            defaultMessage='Community URL'
                         />
                     </h2>
                     <div className={nameDivClass}>

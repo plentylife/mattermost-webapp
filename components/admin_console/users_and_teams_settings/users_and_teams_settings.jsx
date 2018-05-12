@@ -263,7 +263,7 @@ export class UsersAndTeamsSettings extends AdminSettings {
                     label={
                         <FormattedMessage
                             id='admin.team.teamCreationTitle'
-                            defaultMessage='Enable Team Creation: '
+                            defaultMessage='Enable Community Creation: '
                         />
                     }
                     helpText={
@@ -281,7 +281,7 @@ export class UsersAndTeamsSettings extends AdminSettings {
                     label={
                         <FormattedMessage
                             id='admin.team.maxUsersTitle'
-                            defaultMessage='Max Users Per Team:'
+                            defaultMessage='Max Users Per Community:'
                         />
                     }
                     placeholder={Utils.localizeMessage('admin.team.maxUsersExample', 'Ex "25"')}
@@ -300,7 +300,7 @@ export class UsersAndTeamsSettings extends AdminSettings {
                     label={
                         <FormattedMessage
                             id='admin.team.maxChannelsTitle'
-                            defaultMessage='Max Channels Per Team:'
+                            defaultMessage='Max Channels Per Community:'
                         />
                     }
                     placeholder={Utils.localizeMessage('admin.team.maxChannelsExample', 'Ex "100"')}

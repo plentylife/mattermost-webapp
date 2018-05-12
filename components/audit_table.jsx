@@ -180,7 +180,7 @@ const holders = defineMessages({
     },
     revokedAll: {
         id: 'audit_table.revokedAll',
-        defaultMessage: 'Revoked all current sessions for the team',
+        defaultMessage: 'Revoked all current sessions for the community',
     },
     loginAttempt: {
         id: 'audit_table.loginAttempt',

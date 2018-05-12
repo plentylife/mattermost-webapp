@@ -102,7 +102,7 @@ class TeamSettingsModal extends React.Component {
                     <Modal.Title>
                         <FormattedMessage
                             id='team_settings_modal.title'
-                            defaultMessage='Team Settings'
+                            defaultMessage='Community Settings'
                         />
                     </Modal.Title>
                 </Modal.Header>

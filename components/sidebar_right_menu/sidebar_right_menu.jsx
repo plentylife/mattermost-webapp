@@ -210,7 +210,7 @@ export default class SidebarRightMenu extends React.Component {
                             <i className='icon fa fa-user-plus'/>
                             <FormattedMessage
                                 id='sidebar_right_menu.addMemberToTeam'
-                                defaultMessage='Add Members to Team'
+                                defaultMessage='Add Members to Community'
                             />
                         </a>
                     </li>
@@ -235,7 +235,7 @@ export default class SidebarRightMenu extends React.Component {
                                     <i className='icon fa fa-link'/>
                                     <FormattedMessage
                                         id='sidebar_right_menu.teamLink'
-                                        defaultMessage='Get Team Invite Link'
+                                        defaultMessage='Get Community Invite Link'
                                     />
                                 </a>
                             </li>
@@ -264,7 +264,7 @@ export default class SidebarRightMenu extends React.Component {
                             <i className='icon fa fa-plus-square'/>
                             <FormattedMessage
                                 id='navbar_dropdown.join'
-                                defaultMessage='Join Another Team'
+                                defaultMessage='Join Another Community'
                             />
                         </Link>
                     </li>
@@ -283,7 +283,7 @@ export default class SidebarRightMenu extends React.Component {
                             <i className='icon fa fa-plus-square'/>
                             <FormattedMessage
                                 id='navbar_dropdown.create'
-                                defaultMessage='Create a New Team'
+                                defaultMessage='Create a New Community'
                             />
                         </Link>
                     </li>
@@ -336,7 +336,7 @@ export default class SidebarRightMenu extends React.Component {
                         <LeaveTeamIcon className='icon'/>
                         <FormattedMessage
                             id='navbar_dropdown.leave'
-                            defaultMessage='Leave Team'
+                            defaultMessage='Leave Community'
                         />
                     </a>
                 </li>
@@ -356,7 +356,7 @@ export default class SidebarRightMenu extends React.Component {
                         <i className='icon fa fa-globe'/>
                         <FormattedMessage
                             id='sidebar_right_menu.teamSettings'
-                            defaultMessage='Team Settings'
+                            defaultMessage='Community Settings'
                         />
                     </a>
                 </li>

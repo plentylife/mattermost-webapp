@@ -241,7 +241,7 @@ export default class TeamAnalytics extends React.Component {
                         <h3>
                             <FormattedMessage
                                 id='analytics.team.title'
-                                defaultMessage='Team Statistics for {team}'
+                                defaultMessage='Community Statistics for {team}'
                                 values={{
                                     team: this.state.team.display_name,
                                 }}

@@ -83,9 +83,9 @@ export default class ManageTeamsDropdown extends React.Component {
 
         let title;
         if (isTeamAdmin) {
-            title = Utils.localizeMessage('admin.user_item.teamAdmin', 'Team Admin');
+            title = Utils.localizeMessage('admin.user_item.teamAdmin', 'Community Admin');
         } else {
-            title = Utils.localizeMessage('admin.user_item.teamMember', 'Team Member');
+            title = Utils.localizeMessage('admin.user_item.teamMember', 'Community Member');
         }
 
         let makeTeamAdmin = null;
@@ -97,7 +97,7 @@ export default class ManageTeamsDropdown extends React.Component {
                 >
                     <FormattedMessage
                         id='admin.user_item.makeTeamAdmin'
-                        defaultMessage='Make Team Admin'
+                        defaultMessage='Make Community Admin'
                     />
                 </MenuItem>
             );
@@ -136,7 +136,7 @@ export default class ManageTeamsDropdown extends React.Component {
                     >
                         <FormattedMessage
                             id='team_members_dropdown.leave_team'
-                            defaultMessage='Remove from Team'
+                            defaultMessage='Remove from Community'
                         />
                     </MenuItem>
                 </Dropdown.Menu>

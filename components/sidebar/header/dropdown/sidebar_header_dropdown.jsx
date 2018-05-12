@@ -289,7 +289,7 @@ export default class SidebarHeaderDropdown extends React.Component {
                         >
                             <FormattedMessage
                                 id='navbar_dropdown.addMemberToTeam'
-                                defaultMessage='Add Members to Team'
+                                defaultMessage='Add Members to Community'
                             />
                         </button>
                     </li>
@@ -314,7 +314,7 @@ export default class SidebarHeaderDropdown extends React.Component {
                                 >
                                     <FormattedMessage
                                         id='navbar_dropdown.teamLink'
-                                        defaultMessage='Get Team Invite Link'
+                                        defaultMessage='Get Community Invite Link'
                                     />
                                 </button>
                             </li>
@@ -337,7 +337,7 @@ export default class SidebarHeaderDropdown extends React.Component {
                     >
                         <FormattedMessage
                             id='navbar_dropdown.teamSettings'
-                            defaultMessage='Team Settings'
+                            defaultMessage='Community Settings'
                         />
                     </button>
                 </li>
@@ -435,7 +435,7 @@ export default class SidebarHeaderDropdown extends React.Component {
                     >
                         <FormattedMessage
                             id='navbar_dropdown.create'
-                            defaultMessage='Create a New Team'
+                            defaultMessage='Create a New Community'
                         />
                     </Link>
                 </li>
@@ -465,7 +465,7 @@ export default class SidebarHeaderDropdown extends React.Component {
                         >
                             <FormattedMessage
                                 id='navbar_dropdown.join'
-                                defaultMessage='Join Another Team'
+                                defaultMessage='Join Another Community'
                             />
                         </Link>
                     </li>
@@ -481,7 +481,7 @@ export default class SidebarHeaderDropdown extends React.Component {
                     >
                         <FormattedMessage
                             id='navbar_dropdown.leave'
-                            defaultMessage='Leave Team'
+                            defaultMessage='Leave Community'
                         />
                     </button>
                 </li>

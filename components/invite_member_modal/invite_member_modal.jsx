@@ -429,7 +429,7 @@ class InviteMemberModal extends React.Component {
                         >
                             <FormattedMessage
                                 id='invite_member.inviteLink'
-                                defaultMessage='Team Invite Link'
+                                defaultMessage='Community Invite Link'
                             />
                         </button>
                     );
@@ -464,7 +464,7 @@ class InviteMemberModal extends React.Component {
                         <p>
                             <FormattedMessage
                                 id='invite_member.disabled'
-                                defaultMessage='User creation has been disabled for your team. Please ask your Team Administrator for details.'
+                                defaultMessage='User creation has been disabled for your team. Please ask your Community Administrator for details.'
                             />
                         </p>
                     </div>

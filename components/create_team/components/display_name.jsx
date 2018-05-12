@@ -91,7 +91,7 @@ export default class TeamSignupDisplayNamePage extends React.PureComponent {
                     <h2>
                         <FormattedMessage
                             id='create_team.display_name.teamName'
-                            defaultMessage='Team Name'
+                            defaultMessage='Community Name'
                         />
                     </h2>
                     <div className={nameDivClass}>

@@ -56,7 +56,7 @@ export default class CustomEmojiSettings extends AdminSettings {
                     id='restrictCustomEmojiCreation'
                     values={[
                         {value: 'all', text: Utils.localizeMessage('admin.customization.restrictCustomEmojiCreationAll', 'Allow everyone to create custom emoji')},
-                        {value: 'admin', text: Utils.localizeMessage('admin.customization.restrictCustomEmojiCreationAdmin', 'Allow System and Team Admins to create custom emoji')},
+                        {value: 'admin', text: Utils.localizeMessage('admin.customization.restrictCustomEmojiCreationAdmin', 'Allow System and Community Admins to create custom emoji')},
                         {value: 'system_admin', text: Utils.localizeMessage('admin.customization.restrictCustomEmojiCreationSystemAdmin', 'Only allow System Admins to create custom emoji')},
                     ]}
                     label={

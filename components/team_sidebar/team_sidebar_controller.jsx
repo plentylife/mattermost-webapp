@@ -174,7 +174,7 @@ export default class TeamSidebar extends React.Component {
                         tip={
                             <FormattedMessage
                                 id='navbar_dropdown.create'
-                                defaultMessage='Create a New Team'
+                                defaultMessage='Create a New Community'
                             />
                         }
                         content={<i className='fa fa-plus'/>}

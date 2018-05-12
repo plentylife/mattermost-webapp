@@ -58,7 +58,7 @@ export default class GetTeamInviteLinkModal extends React.PureComponent {
 
         let helpText;
         if (this.props.config.EnableUserCreation === 'true') {
-            helpText = Utils.localizeMessage('get_team_invite_link_modal.help', 'Send teammates the link below for them to sign-up to this team site. The Team Invite Link can be shared with multiple teammates as it does not change unless it\'s regenerated in Team Settings by a Team Admin.');
+            helpText = Utils.localizeMessage('get_team_invite_link_modal.help', 'Send teammates the link below for them to sign-up to this team site. The Community Invite Link can be shared with multiple teammates as it does not change unless it\'s regenerated in Community Settings by a Community Admin.');
         } else {
             helpText = Utils.localizeMessage('get_team_invite_link_modal.helpDisabled', 'User creation has been disabled for your team. Please ask your team administrator for details.');
         }
@@ -67,7 +67,7 @@ export default class GetTeamInviteLinkModal extends React.PureComponent {
             <GetLinkModal
                 show={this.state.show}
                 onHide={this.onHide}
-                title={Utils.localizeMessage('get_team_invite_link_modal.title', 'Team Invite Link')}
+                title={Utils.localizeMessage('get_team_invite_link_modal.title', 'Community Invite Link')}
                 helpText={helpText}
                 link={inviteUrl}
             />

@@ -45,7 +45,7 @@ export default class RemoveFromTeamButton extends React.PureComponent {
             >
                 <FormattedMessage
                     id='team_members_dropdown.leave_team'
-                    defaultMessage='Remove from Team'
+                    defaultMessage='Remove from Community'
                 />
             </button>
         );

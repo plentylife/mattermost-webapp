@@ -64,7 +64,7 @@ export default class AboutBuildModal extends React.PureComponent {
         let subTitle = (
             <FormattedMessage
                 id='about.teamEditionSt'
-                defaultMessage='All your team communication in one place, instantly searchable and accessible anywhere.'
+                defaultMessage='All your community communication in one place, instantly searchable and accessible anywhere.'
             />
         );
 

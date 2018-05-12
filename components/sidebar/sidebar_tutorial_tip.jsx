@@ -31,7 +31,7 @@ export default class SidebarTutorialTip extends React.PureComponent {
             <div>
                 <FormattedHTMLMessage
                     id='sidebar.tutorialScreen1'
-                    defaultMessage={'<h4>Channels</h4><p><strong>Channels</strong> organize conversations across different topics. They\'re open to everyone on your team. To send private communications use <strong>Direct Messages</strong> for a single person or <strong>Private Channels</strong> for multiple people.</p>'}
+                    defaultMessage={'<h4>Channels</h4><p><strong>Channels</strong> organize conversations across different topics. They\'re open to everyone on your community. To send private communications use <strong>Direct Messages</strong> for a single person or <strong>Private Channels</strong> for multiple people.</p>'}
                 />
             </div>
         );
@@ -42,8 +42,8 @@ export default class SidebarTutorialTip extends React.PureComponent {
                     id='sidebar.tutorialScreen2'
                     defaultMessage='<h4>"{townsquare}" and "{offtopic}" channels</h4>
                     <p>Here are two public channels to start:</p>
-                    <p><strong>{townsquare}</strong> is a place for team-wide communication. Everyone in your team is a member of this channel.</p>
-                    <p><strong>{offtopic}</strong> is a place for fun and humor outside of work-related channels. You and your team can decide what other channels to create.</p>'
+                    <p><strong>{townsquare}</strong> is a place for community-wide communication. Everyone in your community is a member of this channel.</p>
+                    <p><strong>{offtopic}</strong> is a place for fun and humor outside of work-related channels. You and your community can decide what other channels to create.</p>'
                     values={{
                         townsquare: townSquareDisplayName,
                         offtopic: offTopicDisplayName,
