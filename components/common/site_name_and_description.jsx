@@ -35,7 +35,7 @@ export default class SiteNameAndDescription extends React.PureComponent {
         //     );
         // }
         const siteName = 'Plenty';
-        const description = 'where doing the right thing, is profitable';
+        const description = 'where doing the right thing is profitable';
 
         return (
             <React.Fragment>
