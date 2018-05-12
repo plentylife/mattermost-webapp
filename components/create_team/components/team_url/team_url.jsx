@@ -68,7 +68,7 @@ export default class TeamUrl extends React.PureComponent {
         const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
         const cleanedName = URL.cleanUpUrlable(name);
         const urlRegex = /^[a-z]+([a-z\-0-9]+|(__)?)[a-z0-9]+$/g;
-        const {actions: {checkIfTeamExists, createTeam}} = this.props;
+        const {actions: {checkIfTeamExists, createTeam, updateTeam}} = this.props;
 
         if (!name) {
             this.setState({nameError: (
@@ -134,7 +134,14 @@ export default class TeamUrl extends React.PureComponent {
             return;
         }
 
-        const {data, error} = await createTeam(teamSignup.team);
+        const {data, errorCreate} = await createTeam(teamSignup.team);
+
+        /* PLENTY: all communities are open */
+        let error = await updateTeam(Object.assign({}, data, {allow_open_invite: true}));
+        error = errorCreate || error;
+        console.log('Update of team at create time resulted in error', error);
+
+        /* --- */
 
         if (data) {
             this.props.history.push('/' + data.name + '/channels/town-square');

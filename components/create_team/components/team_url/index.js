@@ -4,7 +4,7 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import {checkIfTeamExists, createTeam} from 'mattermost-redux/actions/teams';
+import {checkIfTeamExists, createTeam, updateTeam} from 'mattermost-redux/actions/teams';
 
 import TeamUrl from './team_url';
 
@@ -13,6 +13,7 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators({
             checkIfTeamExists,
             createTeam,
+            updateTeam,
         }, dispatch),
     };
 }
