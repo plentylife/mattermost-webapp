@@ -25,9 +25,10 @@ import loadRoot from 'bundle-loader?lazy!components/root';
 import {Preferences} from './utils/constants';
 import {savePreference, updateUser} from './actions/user_actions'
 import UserStore from './stores/user_store';
+import {imageURLForUser} from './utils/utils'
 
 plentyInit();
-provideUserGetterSetter(UserStore.getCurrentUser, updateUser);
+provideUserGetterSetter(UserStore.getProfile, updateUser, imageURLForUser);
 
 const Root = makeAsyncComponent(loadRoot);
 
