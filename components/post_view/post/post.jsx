@@ -14,7 +14,7 @@ import PostBody from 'components/post_view/post_body';
 import PostHeader from 'components/post_view/post_header';
 import ProfilePicture from 'components/profile_picture.jsx';
 import MattermostLogo from 'components/svg/mattermost_logo';
-import {MessageRating} from 'plenty-chat';
+import {GiveButton} from 'plenty-chat';
 
 export default class Post extends React.PureComponent {
     static propTypes = {
@@ -296,15 +296,15 @@ export default class Post extends React.PureComponent {
         }
 
         const MessageRatingDisplay = () => {
-            // fixme add check for self
             if (!isSystemMessage && this.props.currentUser.id !== post.user_id) {
-                return <MessageRating
-                    agentId={this.props.currentUser.id}
-                    messageId={this.props.post.id}
-                />
+                return (<GiveButton
+                    messageSenderId={post.user_id}
+                    messageId={post.id}
+                    channelId={post.channel_id}
+                        />);
             }
-            return null
-        }
+            return null;
+        };
 
         return (
             <div
