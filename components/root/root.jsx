@@ -217,8 +217,7 @@ export default class Root extends React.Component {
     redirectIfNecessary = (props) => {
         if (props.location.pathname === '/') {
             if (this.props.noAccounts) {
-                // this.props.history.push('/signup_user_complete');
-                this.props.history.push('/front-page');
+                this.props.history.push('/signup_user_complete');
             } else if (UserStore.getCurrentUser()) {
                 GlobalActions.redirectUserToDefaultTeam();
             }
