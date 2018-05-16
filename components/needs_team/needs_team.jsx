@@ -21,6 +21,7 @@ import {loadProfilesForSidebar} from 'actions/user_actions.jsx';
 import {makeAsyncComponent} from 'components/async_load';
 import loadBackstageController from 'bundle-loader?lazy!components/backstage';
 import ChannelController from 'components/channel_layout/channel_controller';
+import Client4 from 'mattermost-redux/client/client4'
 
 const BackstageController = makeAsyncComponent(loadBackstageController);
 
