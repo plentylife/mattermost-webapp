@@ -11,6 +11,6 @@
 //}
 
 {
-  "presets": ["env", "es2015", "stage-0", "react", "flow"],
+  "presets": ["env", ["es2015", { "modules": false }], "stage-0", "react", "flow"],
   "plugins": []
 }
