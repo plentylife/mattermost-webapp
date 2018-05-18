@@ -11,9 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractCSS = new ExtractTextPlugin('[name].[contentHash].css');
-const extractSCSS = new ExtractTextPlugin('[name].[contentHash].css');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const NPM_TARGET = process.env.npm_lifecycle_event; //eslint-disable-line no-process-env
 
@@ -166,15 +164,7 @@ var config = {
                 ],
             },
             {
-                test: /\.json$/,
-                exclude: /manifest\.json$/,
-                use: [
-                    {
-                        loader: 'json-loader',
-                    },
-                ],
-            },
-            {
+                type: 'javascript/auto',
                 test: /manifest\.json$/,
                 use: [
                     {
@@ -183,8 +173,22 @@ var config = {
                 ],
             },
             {
+                type: 'javascript/auto',
+                test: /\.json$/,
+                include: [
+                    path.resolve(__dirname, 'i18n'),
+                ],
+                exclude: [/en\.json$/],
+                use: [
+                    {
+                        loader: 'file-loader?name=i18n/[name].[hash].[ext]',
+                    },
+                ],
+            },
+            {
                 test: /\.scss$/,
-                use: extractSCSS.extract([
+                use: [
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                     },
@@ -194,15 +198,16 @@ var config = {
                             includePaths: ['node_modules/compass-mixins/lib'],
                         },
                     },
-                ]),
+                ],
             },
             {
                 test: /\.css$/,
-                use: extractCSS.extract([
+                use: [
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                     },
-                ]),
+                ],
             },
             {
                 test: /\.(png|eot|tiff|svg|woff2|woff|ttf|gif|mp3|jpg)$/,
@@ -262,10 +267,6 @@ var config = {
             minimize: !DEV,
             debug: false,
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            minChunks: 2,
-            children: true,
-        }),
         new webpack.DefinePlugin({
             COMMIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse HEAD || echo dev').toString()),
             'process.env': {
@@ -273,12 +274,14 @@ var config = {
                 // PLENTY_PEER: JSON.stringify('http://localhost:3000/')
             }
         }),
-        extractCSS,
-        extractSCSS,
         // new BundleAnalyzerPlugin(),
         new DuplicatePackageCheckerPlugin({
             verbose: true,
             // emitError: true,
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contentHash].css',
+            chunkFilename: '[name].[contentHash].css',
         }),
     ],
     externals: {
@@ -296,6 +299,7 @@ if (NPM_TARGET !== 'stats') {
 
 // Development mode configuration
 if (DEV) {
+    config.mode = 'development';
     if (FULLMAP) {
         config.devtool = 'source-map';
     } else {
@@ -306,20 +310,8 @@ if (DEV) {
 
 // Production mode configuration
 if (!DEV) {
+    config.mode = 'production';
     config.devtool = 'source-map';
-    config.plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            'screw-ie8': true,
-            mangle: {
-                toplevel: false,
-            },
-            compress: {
-                warnings: false,
-            },
-            comments: false,
-            sourceMap: true,
-        })
-    );
     config.plugins.push(
         new webpack.optimize.OccurrenceOrderPlugin(true)
     );
@@ -330,7 +322,6 @@ if (!DEV) {
             }
         })
     );
-    config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
 }
 
 // Test mode configuration

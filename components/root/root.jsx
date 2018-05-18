@@ -81,7 +81,7 @@ const LoggedInRoute = ({component: Component, ...rest}) => (
             <LoggedIn {...props}>
                 <Component {...props}/>
             </LoggedIn>
-    )}
+        )}
     />
 );
 
@@ -225,7 +225,7 @@ export default class Root extends React.Component {
         }
     }
 
-    componentWillReceiveProps(newProps) {
+    UNSAFE_componentWillReceiveProps(newProps) { // eslint-disable-line camelcase
         this.redirectIfNecessary(newProps);
     }
 

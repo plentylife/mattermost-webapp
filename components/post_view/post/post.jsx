@@ -105,7 +105,7 @@ export default class Post extends React.PureComponent {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
         this.setState({sameRoot: this.hasSameRoot(nextProps)});
     }
 
