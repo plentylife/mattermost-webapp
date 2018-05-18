@@ -17,6 +17,7 @@ import PostBodyAdditionalContent from 'components/post_view/post_body_additional
 import PostMessageView from 'components/post_view/post_message_view';
 import ReactionListContainer from 'components/post_view/reaction_list';
 import loadingGif from 'images/load.gif';
+import {MessageAmountCollected} from 'plenty-chat'
 
 const SENDING_ANIMATION_DELAY = 3000;
 
@@ -288,6 +289,7 @@ export default class PostBody extends React.PureComponent {
                         post={post}
                         isReadOnly={this.props.isReadOnly}
                     />
+                    <MessageAmountCollected/>
                 </div>
             </div>
         );

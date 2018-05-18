@@ -295,7 +295,7 @@ export default class Post extends React.PureComponent {
             centerClass = 'center';
         }
 
-        const MessageRatingDisplay = () => {
+        const GiveButtonDisplay = () => {
             if (!isSystemMessage && this.props.currentUser.id !== post.user_id) {
                 return (<GiveButton
                     messageSenderId={post.user_id}
@@ -324,7 +324,7 @@ export default class Post extends React.PureComponent {
                 >
                     <div className={'post__content ' + centerClass}>
 
-                       <MessageRatingDisplay/>
+                       <GiveButtonDisplay/>
 
                         {profilePicContainer}
                         <div>
