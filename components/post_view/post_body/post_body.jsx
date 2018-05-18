@@ -289,7 +289,7 @@ export default class PostBody extends React.PureComponent {
                         post={post}
                         isReadOnly={this.props.isReadOnly}
                     />
-                    <MessageAmountCollected/>
+                    <MessageAmountCollected messageId={post.id}/>
                 </div>
             </div>
         );
