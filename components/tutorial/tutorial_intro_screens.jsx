@@ -16,7 +16,7 @@ import {useSafeUrl} from 'utils/url.jsx';
 import AppIcons from 'images/appIcons.png';
 import {Tutorial} from 'plenty-chat';
 
-const NUM_SCREENS = 7;
+const NUM_SCREENS = 4;
 
 export default class TutorialIntroScreens extends React.Component {
     static propTypes = {
