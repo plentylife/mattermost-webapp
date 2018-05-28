@@ -270,7 +270,7 @@ var config = {
         new webpack.DefinePlugin({
             COMMIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse HEAD || echo dev').toString()),
             'process.env': {
-                PLENTY_PEER: JSON.stringify(process.env.PLENTY_PEER === 'local' ? 'http://localhost:3000/' : 'https://plenty.life/')
+                PLENTY_PEER: JSON.stringify(process.env.PLENTY_PEER === 'remote' ? 'https://plenty.life/' : 'http://localhost:3000/'),
                 // PLENTY_PEER: JSON.stringify('http://localhost:3000/')
             }
         }),
