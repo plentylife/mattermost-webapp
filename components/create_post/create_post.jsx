@@ -934,7 +934,12 @@ export default class CreatePost extends React.Component {
                         getUserProfile={UserStore.getProfile}
                     />
 
-                    <div className='post-create-body'>
+                    <div
+                        className='post-create-body'
+                        data-step='7'
+                        data-position='top'
+                        data-intro='Treat <span className="plenty-word">Plenty</span> as any other chat platform. Chat just for fun, keep your team organized, debate about politics, share your class notes, plan your camping trip, or brainstorm on your next startup.'
+                    >
                         <div className='post-body__cell'>
                             <Textbox
                                 onChange={this.handleChange}
