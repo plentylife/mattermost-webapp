@@ -27,7 +27,6 @@ import {savePreference, updateUser} from './actions/user_actions'
 import UserStore from './stores/user_store';
 import {imageURLForUser} from './utils/utils'
 
-plentyInit();
 provideUserGetterSetter(UserStore.getProfile, updateUser, imageURLForUser);
 
 const Root = makeAsyncComponent(loadRoot);
@@ -39,11 +38,16 @@ PDFJS.disableWorker = true;
 function preRenderSetup(callwhendone) {
     let unsubscribe = null;
     unsubscribe = store.subscribe(() => {
-        plentyInitSync(getCurrentUserId(store.getState()), getCurrentTeamId(store.getState()), () => {
-            if (typeof unsubscribe === 'function') {
-                unsubscribe();
-            }
-        }, [process.env.PLENTY_PEER]);
+        const cuid = getCurrentUserId(store.getState())
+        const ctid = getCurrentTeamId(store.getState())
+        if (cuid && ctid) {
+            plentyInit();
+            plentyInitSync(getCurrentUserId(store.getState()), getCurrentTeamId(store.getState()), () => {
+                if (typeof unsubscribe === 'function') {
+                    unsubscribe();
+                }
+            }, [process.env.PLENTY_PEER]);
+        }
     });
 
     window.onerror = (msg, url, line, column, stack) => {
@@ -70,7 +74,7 @@ function preRenderSetup(callwhendone) {
 }
 
 function renderRootComponent() {
-    nSQL().onConnected((db) => {
+    // nSQL().onConnected((db) => {
         ReactDOM.render((
             <Provider store={store}>
                 <Router history={browserHistory}>
@@ -82,7 +86,7 @@ function renderRootComponent() {
             </Provider>
             ),
             document.getElementById('root'));
-    });
+    // });
 }
 
 /**
